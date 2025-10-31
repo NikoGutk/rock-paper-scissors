@@ -1,6 +1,8 @@
 const rock = 0;
 const paper = 1;
 const scissors = 2;
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
   const randomValue = Math.floor(Math.random() * 3);
@@ -47,7 +49,36 @@ function playRound (computerChoice, humanChoice) {
                 console.log("Human wins!");
               }
     }
+
+function gameScore (computer, human) {
+    if (computer === human) {
+        return 0;
+    }
+    if ((human === rock && computer ===scissors) ||
+        (human === paper && computer === rock) ||
+        (human === scissors && computer === paper)) {
+            return 1;
+        } else {
+            return -1;
+        }
+}
     
-const computer = getComputerChoice();
-const human = getHumanChoice();
-playRound(computer, human);
+
+
+while (humanScore < 5 && computerScore < 5) {
+    const computer = getComputerChoice();
+    const human = getHumanChoice();
+    if (human === null) continue;
+
+    let result = gameScore(computer,human);
+    if (result === 1) humanScore++;
+    else if (result === -1) computerScore++;
+    console.log(`Score — You: ${humanScore} | Computer: ${computerScore}`);
+
+}
+
+if (humanScore === 5) {
+    console.log("You won the game!");
+} else {
+    console.log("Computer beat your ass!")
+}
