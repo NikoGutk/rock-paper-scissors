@@ -37,12 +37,12 @@ function getHumanChoice () {
   }
 }
 
-function playRound (computerChoice, humanChoice) {
-    if (computerChoice === humanChoice) {
+function playRound (getComputerChoice, getHumanChoice) {
+    if (getComputerChoice === getHumanChoice) {
         console.log("Draw")
-    } else if ((computerChoice === rock && humanChoice === scissors) ||
-              (computerChoice === paper && humanChoice === rock) ||
-              (computerChoice === scissors && humanChoice === paper))    
+    } else if ((getComputerChoice === rock && getHumanChoice === scissors) ||
+              (getComputerChoice === paper && getHumanChoice === rock) ||
+              (getComputerChoice === scissors && getHumanChoice === paper))    
               {
                 console.log("Computer wins");
               } else {
